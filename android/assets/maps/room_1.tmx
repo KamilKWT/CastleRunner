@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="32" tileheight="32" infinite="0" nextobjectid="37">
+ <tileset firstgid="1" source="main.tsx"/>
+ <layer name="Background" width="20" height="16">
+  <data encoding="base64" compression="zlib">
+   eJzzZGBg8KUS9gJiHyD2oxL2BmLmUTyKR/GQxZ4Mg7t8AQCP7Rrx
+  </data>
+ </layer>
+ <layer name="Walls" width="20" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYBjcgBuI2aFYH4gNkPjomJEIzIZktjEQm+CxWwWPXTDMhlM3eWCwm8cFxKw4sBKRZsgg6UGOX2TMw0Ca20FxhR6/yIADye3EupMDj3nIaUMMTU4ZiEVJNA8XkGDA7S9yzOOAmoctLJDDiFjMyYCZx5DlBjsAAK+uBAc=
+  </data>
+ </layer>
+ <layer name="Objects" width="20" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFAw0coRibGDY5UswhRg81zCFkJqWAFDPRw44cvbQ0bxQMHgAAM6cG3A==
+  </data>
+ </layer>
+ <objectgroup name="Walls - obj">
+  <object id="36" x="32" y="416">
+   <polyline points="0,0 0,-128 160,-128 160,-96 192,-64 288,-64 288,-96 256,-128 224,-128 224,-160 192,-192 0,-192 0,-320 64,-320 64,-352 128,-352 128,-320 320,-320 352,-288 608,-288 608,-192 512,-192 512,-160 544,-160 576,-128 576,0 512,0 480,-32 448,-32 448,-96 416,-96 384,-64 352,-64 352,0 0,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Coins - obj">
+  <object id="3" x="64" y="160" width="32" height="32"/>
+  <object id="5" x="96" y="160" width="32" height="32"/>
+  <object id="6" x="128" y="160" width="32" height="32"/>
+  <object id="7" x="160" y="160" width="32" height="32"/>
+  <object id="8" x="32" y="288" width="32" height="32"/>
+  <object id="9" x="32" y="320" width="32" height="32"/>
+  <object id="10" x="64" y="288" width="32" height="32"/>
+  <object id="11" x="64" y="320" width="32" height="32"/>
+  <object id="12" x="96" y="288" width="32" height="32"/>
+  <object id="13" x="96" y="320" width="32" height="32"/>
+  <object id="14" x="128" y="288" width="32" height="32"/>
+  <object id="15" x="128" y="320" width="32" height="32"/>
+  <object id="16" x="160" y="288" width="32" height="32"/>
+  <object id="17" x="160" y="320" width="32" height="32"/>
+  <object id="18" x="256" y="192" width="32" height="32"/>
+  <object id="19" x="288" y="224" width="32" height="32"/>
+  <object id="20" x="320" y="256" width="32" height="32"/>
+  <object id="21" x="512" y="288" width="32" height="32"/>
+  <object id="22" x="544" y="288" width="32" height="32"/>
+  <object id="23" x="512" y="320" width="32" height="32"/>
+  <object id="24" x="544" y="320" width="32" height="32"/>
+  <object id="25" x="416" y="192" width="32" height="32"/>
+  <object id="26" x="448" y="192" width="32" height="32"/>
+  <object id="27" x="480" y="160" width="32" height="32"/>
+  <object id="28" x="512" y="160" width="32" height="32"/>
+  <object id="29" x="544" y="128" width="32" height="32"/>
+  <object id="32" x="576" y="128" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="Pipes - obj">
+  <object id="34" x="96" y="64" width="64" height="64"/>
+ </objectgroup>
+</map>

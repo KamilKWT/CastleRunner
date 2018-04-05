@@ -5,6 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -17,6 +20,7 @@ public class ControlPanel {
 
     public OrthographicCamera camera;
     private Viewport viewport;
+    private Viewport gameViewport;
     public Stage stage;
 
     private Image btnUp;
@@ -27,23 +31,29 @@ public class ControlPanel {
     private Texture btnLeftImg;
     private Texture btnRightImg;
 
-    private int touchX = 0;
-    private int touchY = 0;
+    private Vector2 touchPos;
 
-    public ControlPanel(SpriteBatch batch, CastleRunner game) {
+    public ControlPanel(SpriteBatch batch, CastleRunner game, Viewport gameViewport) {
         this.game = game;
+        this.gameViewport = gameViewport;
 
         camera = new OrthographicCamera();
         viewport = new FitViewport(CastleRunner.V_WIDTH, CastleRunner.V_HEIGHT, camera);
         stage = new Stage(viewport, batch);
 
+        touchPos = new Vector2();
+
         btnUpImg = new Texture(Gdx.files.internal("images/btn-up.png"));
         btnLeftImg = new Texture(Gdx.files.internal("images/btn-left.png"));
         btnRightImg = new Texture(Gdx.files.internal("images/btn-right.png"));
 
-        stage.addActor(btnUp = createButton(CastleRunner.V_WIDTH * 0.125f, btnUpImg));
-        stage.addActor(btnLeft = createButton((CastleRunner.V_WIDTH * 0.875f) - 25, btnLeftImg));
-        stage.addActor(btnRight = createButton((CastleRunner.V_WIDTH * 0.875f) + 25, btnRightImg));
+        btnUp = createButton(CastleRunner.V_WIDTH * 0.125f, btnUpImg);
+        btnLeft = createButton((CastleRunner.V_WIDTH * 0.875f) - 25, btnLeftImg);
+        btnRight = createButton((CastleRunner.V_WIDTH * 0.875f) + 25, btnRightImg);
+
+        stage.addActor(btnUp);
+        stage.addActor(btnLeft);
+        stage.addActor(btnRight);
 
         stage.draw();
     }
@@ -59,9 +69,10 @@ public class ControlPanel {
             return true;
         } else {
             if (Gdx.input.justTouched()) {
-                touchX = Gdx.input.getX();
-                touchY = Gdx.input.getY();
-                if (isBtnTouch(btnUp, touchX, touchY)) {
+                touchPos.set(Gdx.input.getX(), Gdx.input.getY());
+                viewport.unproject(touchPos);
+
+                if (isBtnTouch(btnUp, touchPos)) {
                     Gdx.app.log("Touch", "UP");
                     return true;
                 }
@@ -77,10 +88,10 @@ public class ControlPanel {
         } else {
             for (int i = 0; i < 2; i++) {
                 if (Gdx.input.isTouched(i)) {
-                    touchX = Gdx.input.getX(i);
-                    touchY = Gdx.input.getY(i);
+                    touchPos.set(Gdx.input.getX(i), Gdx.input.getY(i));
+                    viewport.unproject(touchPos);
 
-                    if (isBtnTouch(btnLeft, touchX, touchY)) {
+                    if (isBtnTouch(btnLeft, touchPos)) {
                         Gdx.app.log("Touch", "LEFT");
                         return true;
                     }
@@ -96,11 +107,11 @@ public class ControlPanel {
         } else {
             for (int i = 0; i < 2; i++) {
                 if (Gdx.input.isTouched(i)) {
-                    touchX = Gdx.input.getX(i);
-                    touchY = Gdx.input.getY(i);
+                    touchPos.set(Gdx.input.getX(i), Gdx.input.getY(i));
+                    viewport.unproject(touchPos);
 
-                    if (isBtnTouch(btnRight, touchX, touchY)) {
-                        Gdx.app.log("Touch", "UP");
+                    if (isBtnTouch(btnRight, touchPos)) {
+                        Gdx.app.log("Touch", "RIGHT");
                         return true;
                     }
                 }
@@ -109,7 +120,10 @@ public class ControlPanel {
         return false;
     }
 
-    private boolean isBtnTouch(Image btn, int x, int y) {
-        return ((x >= game.convertToRealPosition(btn.getX(), true) && x <= game.convertToRealPosition(btn.getX() + btn.getWidth(), true)) && (y >= game.convertToRealPosition(btn.getY(), false) && y >= game.convertToRealPosition(btn.getY() + btn.getHeight(), false)));
+    private boolean isBtnTouch(Image btn, Vector2 touchPosition) {
+        return ((touchPosition.x >= btn.getX()
+                && touchPosition.x <= btn.getX() + btn.getWidth())
+                && (touchPosition.y >= btn.getY()
+                && touchPosition.y <= btn.getY() + btn.getHeight()));
     }
 }

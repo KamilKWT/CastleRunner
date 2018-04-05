@@ -29,7 +29,7 @@ public class GameScreen extends AbstractScreen {
         this.viewport = viewport;
 
         hud = new HUD(game.gameBatch, game);
-        controlPanel = new ControlPanel(game.gameBatch, game);
+        controlPanel = new ControlPanel(game.gameBatch, game, viewport);
 
         activeRoom = new ActiveRoom(game, camera, this, controlPanel);
         roomToRender = 1;

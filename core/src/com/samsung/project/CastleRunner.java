@@ -59,7 +59,7 @@ public class CastleRunner extends Game {
 		splashScreen = new SplashScreen(this, gameViewport);
 		gameScreen = new GameScreen(this, gameCamera, gameViewport);
 
-		this.setScreen(gameScreen);
+		this.setScreen(splashScreen);
 	}
 
 	@Override
@@ -98,13 +98,13 @@ public class CastleRunner extends Game {
 
 	public float convertToRealPosition(float vpos, boolean width) {
 		if (width) {
-			if (Math.round(V_WIDTH * VPPRP) == r_width) {
+			if (Math.round(V_WIDTH * VPPRP) >= 0.001f * r_width) {
 				return vpos * VPPRP;
 			} else {
 				return ((r_width - (V_WIDTH * VPPRP)) / 2) + vpos * VPPRP;
 			}
 		} else {
-			if (Math.round(V_HEIGHT * VPPRP) == r_height) {
+			if (Math.round(V_HEIGHT * VPPRP) >= 0.001f * r_height) {
 				return vpos * VPPRP;
 			} else {
 				return ((r_height - (V_HEIGHT * VPPRP)) / 2) + vpos * VPPRP;

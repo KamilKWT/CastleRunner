@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.Event;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -50,6 +50,13 @@ public class ControlPanel {
         btnUp = createButton(CastleRunner.V_WIDTH * 0.125f, btnUpImg);
         btnLeft = createButton((CastleRunner.V_WIDTH * 0.875f) - 25, btnLeftImg);
         btnRight = createButton((CastleRunner.V_WIDTH * 0.875f) + 25, btnRightImg);
+        btnUp.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                Gdx.app.log("Touch", "touchDown() UP");
+                return true;
+            }
+        });
 
         stage.addActor(btnUp);
         stage.addActor(btnLeft);

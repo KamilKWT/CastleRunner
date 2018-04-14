@@ -17,6 +17,7 @@ public class SplashScreen extends AbstractScreen{
     private Viewport viewport;
 
     private Image splashIMG;
+    private Texture splashTexture;
 
     public SplashScreen(CastleRunner game, Viewport viewport) {
         this.game = game;
@@ -31,11 +32,13 @@ public class SplashScreen extends AbstractScreen{
         Runnable endSplash = new Runnable() {
             @Override
             public void run() {
-                game.setScreen(game.gameScreen);
+                dispose();
+                game.music.play();
+                game.setScreen(new MenuScreen(game, game.gameCamera, game.gameViewport, null, true, true));
             }
         };
 
-        Texture splashTexture = new Texture(Gdx.files.internal("images/PowerSoft.png"));
+        splashTexture = new Texture(Gdx.files.internal("images/PowerSoft.png"));
         splashIMG = new Image(splashTexture);
         splashIMG.setOrigin(splashIMG.getWidth() / 2, splashIMG.getHeight() / 2);
         splashIMG.setPosition(stage.getWidth() / 2 - 100, stage.getHeight() + 100);
@@ -70,5 +73,7 @@ public class SplashScreen extends AbstractScreen{
     @Override
     public void dispose() {
         stage.dispose();
+        //splashTexture.dispose();
+        //splashIMG.remove();
     }
 }

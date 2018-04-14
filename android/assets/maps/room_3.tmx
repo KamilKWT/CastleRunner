@@ -1,24 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="32" tileheight="32" infinite="0" nextobjectid="67">
  <tileset firstgid="1" source="main.tsx"/>
  <layer name="Background" width="20" height="16">
   <data encoding="base64" compression="zlib">
-   eJzzZGBg8KUS9gJiHyD2oxL2BmLmIYJZkPBAu2UUj+LBgj0ZBnf5AgCbCRr0
+   eJzzZGBg8KUS9gJiHyD2oxL2BmLmIYJZkPBAu4VW2GIQuGEoY2qH31CID0+GwV2+AADHtBuT
   </data>
  </layer>
  <layer name="Walls" width="20" height="16">
   <data encoding="base64" compression="zlib">
-   eJxjYBjcgA2HuAoQs2PBjFCMrI8DhzgxAGaPGJKYOAXmEbKHC4hZgdgUiM2A2BzKVyLTXG4G7OEEwrJkmE3IvzB/wMwmZD4p4QcyW5sBNS5gQAZqJyz8ZBnI8x86AMWxIpobQP5TI9M8aqUXGAC5jxL/YTMPhFmJxJoE5Ac7AAATuwTs
+   eJxjYBjcgA2HuAoQs2PBjFCMrI8DhzgxAGaPGJKYOAXmEbKHC4hZgdgBCYP4SmSay82APZxAWJYMswn5F+YPmNmEzCcl/EBmazOgxgUMyEDthIWfLAN5/kMHoDhWRHMDyH9qZJpHrfQCAyD3UeI/bOaBMCuRWJOA/GAHAHl7BQo=
   </data>
  </layer>
  <layer name="Objects" width="20" height="16">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFIOBIQzPpYbYjGqaW+ehsfOpGIsAV5sTEx0gPu8EAAE0PBRU=
+   eJxjYBgFIOBIQzPJMdsUiM2A2JxIsx3RMKXAEQcbBtzwyNEDMKFhcoEHhe5AD3MPLOLYwsgJhzi13Udr84Y6AABlagdn
   </data>
  </layer>
- <layer name="I_Walls" width="20" height="16">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo4B04DbA9jOh4aEGnAbaAaMADAA+3wCR
-  </data>
- </layer>
+ <objectgroup name="Walls - obj">
+  <object id="59" x="32" y="384">
+   <polyline points="0,0 0,-32 32,-64 96,-64 128,-32 192,-32"/>
+  </object>
+  <object id="60" x="32" y="288">
+   <polyline points="0,0 0,-64 224,-64 256,-32 320,-32 352,0 416,0 416,-32"/>
+  </object>
+  <object id="61" x="33" y="160">
+   <polyline points="0,0 -1,-96 159,-96 191,-64 351,-64 383,-32 447,-32 447,-96 511,-96 511,-32 543,-32 575,0 607,0 607,96"/>
+  </object>
+  <object id="62" x="576" y="256">
+   <polyline points="0,0 0,32 64,32 64,160"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Floors - obj">
+  <object id="63" x="32" y="384">
+   <polyline points="0,0 32,32 608,32"/>
+  </object>
+  <object id="64" x="32" y="288">
+   <polyline points="0,0 128,0 190.984,62.9844"/>
+  </object>
+  <object id="65" x="32" y="160">
+   <polyline points="0,0 160,0 192,32 256,32 288,64 384,64 414.984,94.9844"/>
+  </object>
+  <object id="66" x="576" y="256">
+   <polyline points="0.984722,-0.00390625 64,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Coins - obj">
+  <object id="2" x="104" y="358" width="16" height="20"/>
+  <object id="3" x="136" y="230" width="16" height="20"/>
+  <object id="4" x="264" y="326" width="16" height="20"/>
+  <object id="5" x="296" y="326" width="16" height="20"/>
+  <object id="6" x="328" y="326" width="16" height="20"/>
+  <object id="7" x="456" y="326" width="16" height="20"/>
+  <object id="8" x="488" y="326" width="16" height="20"/>
+  <object id="9" x="520" y="326" width="16" height="20"/>
+  <object id="10" x="552" y="326" width="16" height="20"/>
+  <object id="11" x="552" y="198" width="16" height="20"/>
+  <object id="12" x="552" y="166" width="16" height="20"/>
+  <object id="13" x="520" y="166" width="16" height="20"/>
+  <object id="14" x="488" y="166" width="16" height="20"/>
+  <object id="15" x="456" y="166" width="16" height="20"/>
+  <object id="16" x="456" y="198" width="16" height="20"/>
+  <object id="17" x="392" y="166" width="16" height="20"/>
+  <object id="18" x="328" y="166" width="16" height="20"/>
+  <object id="19" x="296" y="134" width="16" height="20"/>
+  <object id="20" x="232" y="134" width="16" height="20"/>
+  <object id="21" x="200" y="102" width="16" height="20"/>
+ </objectgroup>
+ <objectgroup name="Crowns - obj">
+  <object id="22" x="68" y="360" width="24" height="15"/>
+ </objectgroup>
+ <objectgroup name="Keys - obj">
+  <object id="23" x="64" y="227" width="26" height="28"/>
+ </objectgroup>
+ <objectgroup name="Lasers - obj">
+  <object id="49" x="396" y="276" width="8" height="32"/>
+  <object id="50" x="396" y="308" width="8" height="32"/>
+  <object id="51" x="396" y="340" width="8" height="32"/>
+  <object id="52" x="396" y="372" width="8" height="32"/>
+ </objectgroup>
+ <objectgroup name="I_Walls - obj">
+  <object id="28" x="448" y="256" width="32" height="32"/>
+  <object id="29" x="480" y="256" width="32" height="32"/>
+  <object id="30" x="512" y="256" width="32" height="32"/>
+  <object id="31" x="544" y="256" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="Trampoline - obj">
+  <object id="37" x="64" y="160" width="32" height="32"/>
+  <object id="38" x="96" y="160" width="32" height="32"/>
+  <object id="39" x="128" y="160" width="32" height="32"/>
+ </objectgroup>
 </map>

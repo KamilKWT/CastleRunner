@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.samsung.project.CastleRunner;
+import com.samsung.project.Rooms.ActiveRoom;
 import com.samsung.project.Screens.GameScreen;
 
 public abstract class InteractiveObjects {
@@ -26,13 +27,15 @@ public abstract class InteractiveObjects {
     protected Body body;
     protected MapObject object;
     protected Fixture fixture;
+    protected ActiveRoom activeRoom;
 
-    public InteractiveObjects(GameScreen screen, World world, TiledMap map, MapObject object) {
+    public InteractiveObjects(GameScreen screen, World world, TiledMap map, MapObject object, ActiveRoom activeRoom, boolean isSensor) {
         this.screen = screen;
         this.world = world;
         this.map = map;
         this.object = object;
         this.rectangle = ((RectangleMapObject) object).getRectangle();
+        this.activeRoom = activeRoom;
 
         BodyDef bodyDef = new BodyDef();
         PolygonShape shape = new PolygonShape();
@@ -45,6 +48,7 @@ public abstract class InteractiveObjects {
 
         shape.setAsBox(rectangle.getWidth() / 2 / PPM, rectangle.getHeight() / 2 / PPM);
         fixtureDef.shape = shape;
+        fixtureDef.isSensor = isSensor;
         fixture = body.createFixture(fixtureDef);
     }
 
@@ -56,8 +60,9 @@ public abstract class InteractiveObjects {
         fixture.setFilterData(filter);
     }
 
-    public TiledMapTileLayer.Cell getCell() {
+    public TiledMapTileLayer.Cell getCell(int nextX, int nextY) {
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("Objects");
-        return layer.getCell((int) (body.getPosition().x * PPM / 32), (int) (body.getPosition().y * PPM / 32));
+
+        return layer.getCell((int) (body.getPosition().x * PPM / 32 + nextX), (int) (body.getPosition().y * PPM / 32) + nextY);
     }
 }

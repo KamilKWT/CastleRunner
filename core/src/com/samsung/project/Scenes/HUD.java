@@ -16,8 +16,8 @@ public class HUD {
     private Viewport viewport;
     public Stage stage;
 
-    private int lives;
-    private int score;
+    public int lives;
+    public int score;
 
     Label livesTitleLabel;
     Label livesLabel;

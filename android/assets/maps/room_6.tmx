@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="32" tileheight="32" infinite="0" nextobjectid="47">
  <tileset firstgid="1" source="main.tsx"/>
  <layer name="Background" width="20" height="16">
   <data encoding="base64" compression="zlib">
-   eJzzZGBg8KUS9gJiHyD2oxL2BmLmUTyKR/GQxZ4Mg7t8AQCP7Rrx
+   eJzzZGBg8KUS9gJiHyD2oxL2BmLmEYYdBoEbRvEophb2ZBjc5QsAYawbLg==
   </data>
  </layer>
  <layer name="Walls" width="20" height="16">
@@ -16,4 +16,70 @@
    eJxjYBgFlAJHKKaV2biAE5q8I1SMXDMdcWBC7kC2G10dNrOIMY8Y91ICCJnpTIG52MKOXD9Q27xRgAoAgp0JrA==
   </data>
  </layer>
+ <objectgroup name="Walls - obj">
+  <object id="41" x="0" y="224">
+   <polyline points="0,0 0,-96 320,-96 352,-128 352,-160 544,-160 544,-128 576,-96 608,-96 608,192"/>
+  </object>
+  <object id="42" x="544" y="288">
+   <polyline points="0,0 -32,32 -160,32 -192,0"/>
+  </object>
+  <object id="43" x="320" y="416">
+   <polyline points="0,0 0,-32"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Floors - obj">
+  <object id="44" x="608" y="416">
+   <polyline points="0,0 -288,0"/>
+  </object>
+  <object id="45" x="352" y="288">
+   <polyline points="1.03906,0 190.941,0.00390625"/>
+  </object>
+  <object id="46" x="320" y="384">
+   <polyline points="-1.01753,-1.02535 -96,-96 -160,-96 -224,-160 -320,-160"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Coins - obj">
+  <object id="2" x="40" y="134" width="16" height="20"/>
+  <object id="3" x="72" y="134" width="16" height="20"/>
+  <object id="4" x="136" y="166" width="16" height="20"/>
+  <object id="5" x="168" y="198" width="16" height="20"/>
+  <object id="6" x="200" y="230" width="16" height="20"/>
+  <object id="7" x="264" y="230" width="16" height="20"/>
+  <object id="8" x="296" y="262" width="16" height="20"/>
+  <object id="9" x="328" y="294" width="16" height="20"/>
+  <object id="10" x="360" y="198" width="16" height="20"/>
+  <object id="11" x="392" y="166" width="16" height="20"/>
+  <object id="12" x="392" y="198" width="16" height="20"/>
+  <object id="13" x="392" y="230" width="16" height="20"/>
+  <object id="14" x="424" y="198" width="16" height="20"/>
+  <object id="15" x="424" y="230" width="16" height="20"/>
+  <object id="16" x="456" y="198" width="16" height="20"/>
+  <object id="17" x="456" y="230" width="16" height="20"/>
+  <object id="18" x="488" y="166" width="16" height="20"/>
+  <object id="19" x="488" y="198" width="16" height="20"/>
+  <object id="20" x="488" y="230" width="16" height="20"/>
+  <object id="21" x="520" y="198" width="16" height="20"/>
+  <object id="22" x="392" y="326" width="16" height="20"/>
+  <object id="23" x="392" y="358" width="16" height="20"/>
+  <object id="24" x="424" y="326" width="16" height="20"/>
+  <object id="25" x="424" y="358" width="16" height="20"/>
+  <object id="26" x="456" y="326" width="16" height="20"/>
+  <object id="27" x="456" y="358" width="16" height="20"/>
+  <object id="28" x="488" y="326" width="16" height="20"/>
+  <object id="29" x="488" y="358" width="16" height="20"/>
+  <object id="30" x="584" y="198" width="16" height="20"/>
+  <object id="31" x="584" y="230" width="16" height="20"/>
+  <object id="32" x="552" y="326" width="16" height="20"/>
+  <object id="33" x="552" y="358" width="16" height="20"/>
+  <object id="34" x="584" y="326" width="16" height="20"/>
+  <object id="35" x="584" y="358" width="16" height="20"/>
+ </objectgroup>
+ <objectgroup name="Crowns - obj">
+  <object id="36" x="228" y="232" width="24" height="15"/>
+  <object id="37" x="356" y="168" width="24" height="15"/>
+  <object id="38" x="516" y="168" width="24" height="15"/>
+ </objectgroup>
+ <objectgroup name="Hearts - obj">
+  <object id="39" x="582" y="294" width="20" height="19"/>
+ </objectgroup>
 </map>

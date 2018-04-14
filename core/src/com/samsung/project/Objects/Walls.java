@@ -13,7 +13,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.samsung.project.CastleRunner;
 
 public class Walls {
-    public static void getWalls(World world, MapObjects objects) {
+    public static void getWalls(World world, MapObjects objects, String usrData) {
         for (MapObject object: objects) {
             Shape shape;
 
@@ -34,7 +34,7 @@ public class Walls {
 
             fixtureDef.shape = shape;
             fixtureDef.density = 1.0f;
-            body.createFixture(fixtureDef).setUserData("Wall");
+            body.createFixture(fixtureDef).setUserData(usrData);
             shape.dispose();
         }
     }

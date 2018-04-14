@@ -10,7 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.samsung.project.Builders.ObjectsBuilder;
+import com.samsung.project.Tools.Builders.ObjectsBuilder;
 import com.samsung.project.CastleRunner;
 import com.samsung.project.Objects.Walls;
 import com.samsung.project.Scenes.ControlPanel;
@@ -24,7 +24,10 @@ public class Room1 {
 
     private CastleRunner game;
     private ObjectsBuilder objectsBuilder;
+    private ControlPanel controlPanel;
+    private ActiveRoom activeRoom;
 
+    private GameScreen screen;
     private OrthographicCamera camera;
 
     private OrthogonalTiledMapRenderer tmr;
@@ -35,9 +38,12 @@ public class Room1 {
     public Player player;
     public Rectangle rectangle;
 
-    public Room1(CastleRunner game, OrthographicCamera camera, GameScreen screen, ControlPanel controlPanel) {
+    public Room1(CastleRunner game, OrthographicCamera camera, GameScreen screen, ControlPanel controlPanel, ActiveRoom activeRoom) {
         this.game = game;
         this.camera = camera;
+        this.screen = screen;
+        this.controlPanel = controlPanel;
+        this.activeRoom = activeRoom;
 
         world = new World(new Vector2(0, -9.8f), false);
         renderer = new Box2DDebugRenderer();
@@ -47,28 +53,40 @@ public class Room1 {
         map = new TmxMapLoader().load("maps/room_1.tmx");
         tmr = new OrthogonalTiledMapRenderer(map);
 
-        objectsBuilder = new ObjectsBuilder(screen, world, map);
+        objectsBuilder = new ObjectsBuilder(screen, world, map, activeRoom);
 
-        player = new Player(world, controlPanel);
-
-        Walls.getWalls(world, map.getLayers().get("Walls - obj").getObjects());
+        Walls.getWalls(world, map.getLayers().get("Floors - obj").getObjects(), "Floor");
+        Walls.getWalls(world, map.getLayers().get("Walls - obj").getObjects(), "Wall");
         objectsBuilder.generateCoins();
         objectsBuilder.generatePipes();
+    }
+
+    public void createPlayer(int playerX, int playerY, int jump) {
+        activeRoom.roomToRender = 1;
+        screen.rooms[0] = true;
+        player = new Player(screen, world, activeRoom, controlPanel, playerX, playerY);
+        if (jump != 0) {
+            player.player.applyForceToCenter(0, jump, false);
+        }
     }
 
     public void render(float delta, SpriteBatch batch) {
         update(Gdx.graphics.getDeltaTime());
 
-        tmr.render();
-
         batch.setProjectionMatrix(camera.combined);
-        player.render(delta, batch);
-
         renderer.render(world, camera.combined.scl(PPM));
+
+        tmr.render();
+        player.render(delta, batch);
     }
 
     public void update(float delta) {
         world.step(1 / 60f, 6, 2);
+
+        if (player.isDeath) {
+            player.player.setActive(false);
+        }
+
         camera.update();
         tmr.setView(camera);
         rectangle = player.getRectangle();

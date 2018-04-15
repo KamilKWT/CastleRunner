@@ -50,7 +50,7 @@ public class Room1 {
 
         world.setContactListener(new WorldContactListener());
 
-        map = new TmxMapLoader().load("maps/room_1.tmx");
+        map = game.assetsLoader.findMap("map-room_1");
         tmr = new OrthogonalTiledMapRenderer(map);
 
         objectsBuilder = new ObjectsBuilder(screen, world, map, activeRoom);

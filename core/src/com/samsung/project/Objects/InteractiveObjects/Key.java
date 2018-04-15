@@ -18,10 +18,17 @@ public class Key extends InteractiveObjects {
         super(screen, world, map, object, activeRoom, true);
         fixture.setUserData(this);
         setCategoryFilter(CastleRunner.BONUS_BIT);
+        if (ID == 0) {
+            getCell(0, 0).setTile(map.getTileSets().getTile(69));
+        } else if (ID == 1) {
+            getCell(0, 0).setTile(map.getTileSets().getTile(70));
+        } else if (ID == 2) {
+            getCell(0, 0).setTile(map.getTileSets().getTile(71));
+        }
 
         this.ID = ID;
 
-        sound = Gdx.audio.newMusic(Gdx.files.internal("sounds/key.mp3"));
+        sound = screen.game.assetsLoader.findSound("sound-key");
         sound.setLooping(false);
         sound.setVolume(screen.game.volume);
     }
@@ -35,6 +42,7 @@ public class Key extends InteractiveObjects {
         screen.keys[ID] = true;
 
         sound.setVolume(screen.game.volume);
+        sound.stop();
         sound.play();
     }
 }

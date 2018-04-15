@@ -100,7 +100,7 @@ public class ResultsScreen extends AbstractScreen {
         stage = new Stage(viewport, batch);
         Gdx.input.setInputProcessor(stage);
 
-        resultsMap = new TmxMapLoader().load("maps/results.tmx");
+        resultsMap = game.assetsLoader.findMap("map-results");
         tmr = new OrthogonalTiledMapRenderer(resultsMap);
     }
 

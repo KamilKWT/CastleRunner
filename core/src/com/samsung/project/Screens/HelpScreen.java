@@ -33,10 +33,10 @@ public class HelpScreen extends AbstractScreen {
         camera = new OrthographicCamera();
         viewport = new FitViewport(CastleRunner.V_WIDTH, CastleRunner.V_HEIGHT, camera);
 
-        help1 = new Texture("images/help/page1.png");
-        help2 = new Texture("images/help/page2.png");
-        help3 = new Texture("images/help/page3.png");
-        help4 = new Texture("images/help/page4.png");
+        help1 = game.assetsLoader.findTexture("help-page1");
+        help2 = game.assetsLoader.findTexture("help-page2");
+        help3 = game.assetsLoader.findTexture("help-page3");
+        help4 = game.assetsLoader.findTexture("help-page4");
 
         page = 1;
     }

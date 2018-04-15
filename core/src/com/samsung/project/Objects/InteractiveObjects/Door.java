@@ -20,10 +20,36 @@ public class Door extends InteractiveObjects {
         fixture.setUserData(this);
         setCategoryFilter(CastleRunner.BONUS_BIT);
 
+        if (ID == 0) {
+            if (lastMap) {
+                getCell(0, 0).setTile(map.getTileSets().getTile(85));
+                getCell(0, 1).setTile(map.getTileSets().getTile(81));
+            } else {
+                getCell(0, 0).setTile(map.getTileSets().getTile(81));
+                getCell(0, -1).setTile(map.getTileSets().getTile(85));
+            }
+        } else if (ID == 1) {
+            if (lastMap) {
+                getCell(0, 0).setTile(map.getTileSets().getTile(93));
+                getCell(0, 1).setTile(map.getTileSets().getTile(89));
+            } else {
+                getCell(0, 0).setTile(map.getTileSets().getTile(89));
+                getCell(0, -1).setTile(map.getTileSets().getTile(93));
+            }
+        } else if (ID == 2) {
+            if (lastMap) {
+                getCell(0, 0).setTile(map.getTileSets().getTile(87));
+                getCell(0, 1).setTile(map.getTileSets().getTile(83));
+            } else {
+                getCell(0, 0).setTile(map.getTileSets().getTile(83));
+                getCell(0, -1).setTile(map.getTileSets().getTile(87));
+            }
+        }
+
         this.ID = ID;
         this.lastMap = lastMap;
 
-        sound = Gdx.audio.newMusic(Gdx.files.internal("sounds/doors.mp3"));
+        sound = screen.game.assetsLoader.findSound("sound-doors");
         sound.setLooping(false);
         sound.setVolume(screen.game.volume);
     }
@@ -43,6 +69,7 @@ public class Door extends InteractiveObjects {
             screen.keys[ID] = false;
 
             sound.setVolume(screen.game.volume);
+            sound.stop();
             sound.play();
         }
     }

@@ -13,15 +13,23 @@ public class Laser extends InteractiveObjects {
 
     private float startTime = 0;
     private float time = 0;
+    private boolean up_down;
     private String state = "visible";
     private Music sound;
 
-    public Laser(GameScreen screen, World world, TiledMap map, MapObject object, ActiveRoom activeRoom) {
+    public Laser(GameScreen screen, World world, TiledMap map, MapObject object, ActiveRoom activeRoom, boolean up_down) {
         super(screen, world, map, object, activeRoom, false);
         fixture.setUserData(this);
         setCategoryFilter(CastleRunner.BONUS_BIT);
+        if (up_down) {
+            getCell(0, 0).setTile(map.getTileSets().getTile(72));
+        } else {
+            getCell(0, 0).setTile(map.getTileSets().getTile(68));
+        }
 
-        sound = Gdx.audio.newMusic(Gdx.files.internal("sounds/laser.mp3"));
+        this.up_down = up_down;
+
+        sound = screen.game.assetsLoader.findSound("sound-laser");
         sound.setLooping(false);
         if (activeRoom.roomToRender == 3) {
             sound.setVolume(screen.game.volume);
@@ -77,7 +85,7 @@ public class Laser extends InteractiveObjects {
         }
     }
 
-    public void update(float delta, int duration, boolean up_down) {
+    public void update(float delta, int duration) {
         time += delta;
 
         if (activeRoom.roomToRender == 3) {

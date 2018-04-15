@@ -72,11 +72,11 @@ public class ObjectsBuilder {
         }
     }
 
-    public Laser[] generateLasers() {
+    public Laser[] generateLasers(boolean up_down) {
         lasers = new Laser[map.getLayers().get("Lasers - obj").getObjects().getByType(RectangleMapObject.class).size];
         int index = 0;
         for (MapObject object: map.getLayers().get("Lasers - obj").getObjects().getByType(RectangleMapObject.class)) {
-            lasers[index] = new Laser(screen, world, map, object, activeRoom);
+            lasers[index] = new Laser(screen, world, map, object, activeRoom, up_down);
             index++;
         }
         return lasers;

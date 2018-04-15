@@ -46,16 +46,16 @@ public class EndScreen extends AbstractScreen{
         stage = new Stage(viewport, batch);
         Gdx.input.setInputProcessor(stage);
 
-        winMap = new TmxMapLoader().load("maps/win.tmx");
-        loseMap = new TmxMapLoader().load("maps/lose.tmx");
+        winMap = game.assetsLoader.findMap("map-win");
+        loseMap = game.assetsLoader.findMap("map-lose");
 
         resultsScreen = new ResultsScreen(game, camera, viewport, screen);
 
-        sound_win = Gdx.audio.newMusic(Gdx.files.internal("sounds/win.mp3"));
+        sound_win = screen.game.assetsLoader.findSound("sound-win");
         sound_win.setLooping(false);
         sound_win.setVolume(screen.game.volume);
 
-        sound_lose = Gdx.audio.newMusic(Gdx.files.internal("sounds/lose.mp3"));
+        sound_lose = screen.game.assetsLoader.findSound("sound-lose");
         sound_lose.setLooping(false);
         sound_lose.setVolume(screen.game.volume);
     }

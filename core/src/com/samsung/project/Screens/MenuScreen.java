@@ -65,16 +65,16 @@ public class MenuScreen extends AbstractScreen {
         stage = new Stage(viewport, batch);
         Gdx.input.setInputProcessor(stage);
 
-        btnPlayImg = new Texture("images/btn/play.png");
-        btnResumeImg = new Texture("images/btn/resume.png");
-        btnHelpImg = new Texture("images/btn/help.png");
-        btnSnd_OnImg = new Texture("images/btn/snd_on.png");
-        btnSnd_OffImg = new Texture("images/btn/snd_off.png");
-        btnExitImg = new Texture("images/btn/exit.png");
-        btnMainImg = new Texture("images/btn/main.png");
+        btnPlayImg = game.assetsLoader.findTexture("btn-play");
+        btnResumeImg = game.assetsLoader.findTexture("btn-resume");
+        btnHelpImg = game.assetsLoader.findTexture("btn-help");
+        btnSnd_OnImg = game.assetsLoader.findTexture("btn-snd_on");
+        btnSnd_OffImg = game.assetsLoader.findTexture("btn-snd_off");
+        btnExitImg = game.assetsLoader.findTexture("btn-exit");
+        btnMainImg = game.assetsLoader.findTexture("btn-main");
 
-        mainMap = new TmxMapLoader().load("maps/main.tmx");
-        menuMap = new TmxMapLoader().load("maps/menu.tmx");
+        mainMap = game.assetsLoader.findMap("map-main");
+        menuMap = game.assetsLoader.findMap("map-menu");
     }
 
     @Override

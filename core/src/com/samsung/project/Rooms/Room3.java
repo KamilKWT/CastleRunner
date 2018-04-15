@@ -58,7 +58,7 @@ public class Room3 {
 
         world.setContactListener(new WorldContactListener());
 
-        map = new TmxMapLoader().load("maps/room_3.tmx");
+        map = game.assetsLoader.findMap("map-room_3");
         tmr = new OrthogonalTiledMapRenderer(map);
 
         objectsBuilder = new ObjectsBuilder(screen, world, map, activeRoom);
@@ -68,7 +68,7 @@ public class Room3 {
         objectsBuilder.generateCoins();
         objectsBuilder.generateCrowns();
         objectsBuilder.generateKeys(1);
-        lasers = objectsBuilder.generateLasers();
+        lasers = objectsBuilder.generateLasers(true);
         i_walls = objectsBuilder.generateI_Walls(false);
 
         enemy = new Enemy(world, screen, activeRoom, 224, 160, 544, 160, false);
@@ -106,7 +106,7 @@ public class Room3 {
         rectangle = player.getRectangle();
 
         for (int i = 0; i < 4; i++) {
-            lasers[i].update(delta, 3, true);
+            lasers[i].update(delta, 3);
             i_walls[i].update(delta, 4, false);
         }
     }

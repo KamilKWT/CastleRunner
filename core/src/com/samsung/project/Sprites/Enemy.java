@@ -54,7 +54,7 @@ public class Enemy extends Sprite{
         BodyDef bodyDef = new BodyDef();
         PolygonShape shape = new PolygonShape();
         FixtureDef fixtureDef = new FixtureDef();
-        enemyTex = new Texture("images/sprites/bat.png");
+        enemyTex = screen.game.assetsLoader.findTexture("sprites-bat");
         animation = prepareAnimation(enemyTex, 8, 1);
 
         bodyDef.type = BodyDef.BodyType.KinematicBody;
@@ -71,7 +71,7 @@ public class Enemy extends Sprite{
 
         body.createFixture(fixtureDef).setUserData(this);
 
-        sound = Gdx.audio.newMusic(Gdx.files.internal("sounds/enemy.mp3"));
+        sound = screen.game.assetsLoader.findSound("sound-enemy");
         sound.setLooping(true);
         sound.setVolume(screen.game.volume * 0.75f);
     }

@@ -44,10 +44,10 @@ public class ControlPanel {
 
         touchPos = new Vector2();
 
-        btnMenuImg = new Texture("images/btn/menu.png");
-        btnUpImg = new Texture("images/btn/up.png");
-        btnLeftImg = new Texture("images/btn/left.png");
-        btnRightImg = new Texture("images/btn/right.png");
+        btnMenuImg = game.assetsLoader.findTexture("btn-menu");
+        btnUpImg = game.assetsLoader.findTexture("btn-up");
+        btnLeftImg = game.assetsLoader.findTexture("btn-left");
+        btnRightImg = game.assetsLoader.findTexture("btn-right");
 
         btnMenu = createButton(CastleRunner.V_WIDTH * 0.5f, btnMenuImg);
         btnUp = createButton(CastleRunner.V_WIDTH * 0.125f, btnUpImg);

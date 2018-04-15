@@ -56,7 +56,7 @@ public class Room7 {
 
         world.setContactListener(new WorldContactListener());
 
-        map = new TmxMapLoader().load("maps/room_7.tmx");
+        map = game.assetsLoader.findMap("map-room_7");
         tmr = new OrthogonalTiledMapRenderer(map);
 
         objectsBuilder = new ObjectsBuilder(screen, world, map, activeRoom);
@@ -65,7 +65,7 @@ public class Room7 {
         Walls.getWalls(world, map.getLayers().get("Walls - obj").getObjects(), "Wall");
         objectsBuilder.generateCoins();
         objectsBuilder.generateDoors(1, true);
-        lasers = objectsBuilder.generateLasers();
+        lasers = objectsBuilder.generateLasers(false);
         objectsBuilder.generateGoals();
 
         elevator = new Elevator(screen, world, 224, 96, 224, 272);
@@ -103,7 +103,7 @@ public class Room7 {
         rectangle = player.getRectangle();
 
         for (int i = 0; i < 7; i++) {
-            lasers[i].update(delta, 6, false);
+            lasers[i].update(delta, 6);
         }
     }
 

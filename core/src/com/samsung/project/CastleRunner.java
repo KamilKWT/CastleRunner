@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.samsung.project.Screens.SplashScreen;
+import com.samsung.project.Tools.AssetsLoader;
 
 public class CastleRunner extends Game {
 
@@ -28,6 +29,8 @@ public class CastleRunner extends Game {
 	public static final short ELEVATOR_TOP_BIT = 128;
 	public static final short ELEVATOR_BOTTOM_BIT = 128;
 
+	public AssetsLoader assetsLoader;
+
 	public OrthographicCamera gameCamera;
 	public Viewport gameViewport;
 	public SpriteBatch gameBatch;
@@ -41,6 +44,8 @@ public class CastleRunner extends Game {
 
 	@Override
 	public void create () {
+		assetsLoader = AssetsLoader.loadAssets();
+
 		gameCamera = new OrthographicCamera();
 		gameCamera.setToOrtho(false, V_WIDTH, V_HEIGHT);
 		gameViewport = new FitViewport(V_WIDTH, V_HEIGHT, gameCamera);
@@ -50,7 +55,7 @@ public class CastleRunner extends Game {
 		gameFont.setColor(Color.BLACK);
 
 		volume = 1f;
-		music = Gdx.audio.newMusic(Gdx.files.internal("sounds/CastleRunner.mp3"));
+		music = assetsLoader.findSound("sound-music");
 		music.setLooping(true);
 		music.setVolume(volume / 2);
 

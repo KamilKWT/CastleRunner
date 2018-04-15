@@ -17,8 +17,9 @@ public class Heart extends InteractiveObjects {
         super(screen, world, map, object, activeRoom, true);
         fixture.setUserData(this);
         setCategoryFilter(CastleRunner.BONUS_BIT);
+        getCell(0, 0).setTile(map.getTileSets().getTile(67));
 
-        sound = Gdx.audio.newMusic(Gdx.files.internal("sounds/heart.mp3"));
+        sound = screen.game.assetsLoader.findSound("sound-heart");
         sound.setLooping(false);
         sound.setVolume(screen.game.volume);
     }
@@ -32,6 +33,7 @@ public class Heart extends InteractiveObjects {
         screen.hud.changeLives(true);
 
         sound.setVolume(screen.game.volume);
+        sound.stop();
         sound.play();
     }
 }

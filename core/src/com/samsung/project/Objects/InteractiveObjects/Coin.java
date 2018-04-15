@@ -1,6 +1,5 @@
 package com.samsung.project.Objects.InteractiveObjects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -17,8 +16,9 @@ public class Coin extends InteractiveObjects {
         super(screen, world, map, object, activeRoom, true);
         fixture.setUserData(this);
         setCategoryFilter(CastleRunner.BONUS_BIT);
+        getCell(0, 0).setTile(map.getTileSets().getTile(65));
 
-        sound = Gdx.audio.newMusic(Gdx.files.internal("sounds/coin.mp3"));
+        sound = screen.game.assetsLoader.findSound("sound-coin");
         sound.setLooping(false);
         sound.setVolume(screen.game.volume);
     }
@@ -32,6 +32,7 @@ public class Coin extends InteractiveObjects {
         screen.collectedCoins++;
 
         sound.setVolume(screen.game.volume);
+        sound.stop();
         sound.play();
     }
 }

@@ -22,17 +22,18 @@ public class I_Wall extends InteractiveObjects {
         super(screen, world, map, object, activeRoom, false);
         fixture.setUserData(this);
         setCategoryFilter(CastleRunner.BONUS_BIT);
+        getCell(0, 0).setTile(map.getTileSets().getTile(2));
 
         if (secret) {
             getCell(0, 0).setTile(null);
             state = "invisible";
         }
 
-        sound_visible = Gdx.audio.newMusic(Gdx.files.internal("sounds/i_wall_visible.mp3"));
+        sound_visible = screen.game.assetsLoader.findSound("sound-i_wall_visible");
         sound_visible.setLooping(false);
         sound_visible.setVolume(screen.game.volume);
 
-        sound_invisible = Gdx.audio.newMusic(Gdx.files.internal("sounds/i_wall_invisible.mp3"));
+        sound_invisible = screen.game.assetsLoader.findSound("sound-i_wall_invisible");
         sound_invisible.setLooping(false);
         sound_invisible.setVolume(screen.game.volume);
     }

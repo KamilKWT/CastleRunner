@@ -41,9 +41,9 @@ public class GameScreen extends AbstractScreen {
         hud = new HUD(game.gameBatch, game);
         controlPanel = new ControlPanel(game.gameBatch, game, viewport);
 
-        keyRed = new Texture("images/sprites/key-red.png");
-        keyBlue = new Texture("images/sprites/key-blue.png");
-        keyGreen = new Texture("images/sprites/key-green.png");
+        keyRed = game.assetsLoader.findTexture("sprites-key-red");
+        keyBlue = game.assetsLoader.findTexture("sprites-key-blue");
+        keyGreen = game.assetsLoader.findTexture("sprites-key-green");
 
         keys = new boolean[3];
         keys[0] = false;

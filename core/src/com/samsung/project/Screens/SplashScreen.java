@@ -38,7 +38,7 @@ public class SplashScreen extends AbstractScreen{
             }
         };
 
-        splashTexture = new Texture(Gdx.files.internal("images/PowerSoft.png"));
+        splashTexture = game.assetsLoader.findTexture("PowerSoft");
         splashIMG = new Image(splashTexture);
         splashIMG.setOrigin(splashIMG.getWidth() / 2, splashIMG.getHeight() / 2);
         splashIMG.setPosition(stage.getWidth() / 2 - 100, stage.getHeight() + 100);

@@ -49,10 +49,10 @@ public class Player extends Sprite{
 
         this.world = world;
         bodyBuilder = new BodyBuilder(world, this);
-        StandingRightTex = new Texture("images/sprites/player/StandingRight.png");
-        StandingLeftTex = new Texture("images/sprites/player/StandingLeft.png");
-        JumpingRightTex = new Texture("images/sprites/player/JumpingRight.png");
-        JumpingLeftTex = new Texture("images/sprites/player/JumpingLeft.png");
+        StandingRightTex = screen.game.assetsLoader.findTexture("player-standingRight");
+        StandingLeftTex = screen.game.assetsLoader.findTexture("player-standingLeft");
+        JumpingRightTex = screen.game.assetsLoader.findTexture("player-jumpingRight");
+        JumpingLeftTex = screen.game.assetsLoader.findTexture("player-jumpingLeft");
         rectangle = new Rectangle();
 
         player = bodyBuilder.createPlayer(startX, startY, 52, 52, false);
@@ -63,7 +63,7 @@ public class Player extends Sprite{
         onElevator = false;
         onI_Wall = false;
 
-        sound = Gdx.audio.newMusic(Gdx.files.internal("sounds/player_death.mp3"));
+        sound = screen.game.assetsLoader.findSound("sound-player_death");
         sound.setLooping(false);
         sound.setVolume(screen.game.volume);
     }

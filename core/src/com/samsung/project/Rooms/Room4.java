@@ -53,7 +53,7 @@ public class Room4 {
 
         world.setContactListener(new WorldContactListener());
 
-        map = new TmxMapLoader().load("maps/room_4.tmx");
+        map = game.assetsLoader.findMap("map-room_4");
         tmr = new OrthogonalTiledMapRenderer(map);
 
         objectsBuilder = new ObjectsBuilder(screen, world, map, activeRoom);

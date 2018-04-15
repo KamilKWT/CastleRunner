@@ -45,7 +45,7 @@ public class Elevator {
         EdgeShape topLine = new EdgeShape();
         EdgeShape bottomLine = new EdgeShape();
         FixtureDef fixtureDef = new FixtureDef();
-        elevatorTex = new Texture("images/sprites/elevator.png");
+        elevatorTex = screen.game.assetsLoader.findTexture("sprites-elevator");
 
         bodyDef.type = BodyDef.BodyType.KinematicBody;
         bodyDef.position.set((startX + 32) / PPM, (startY + 8) / PPM);
@@ -64,11 +64,11 @@ public class Elevator {
         fixtureDef.filter.categoryBits = CastleRunner.ELEVATOR_BOTTOM_BIT;
         body.createFixture(fixtureDef).setUserData(this);
 
-        sound_up = Gdx.audio.newMusic(Gdx.files.internal("sounds/elevator_up.mp3"));
+        sound_up = screen.game.assetsLoader.findSound("sound-elevator_up");
         sound_up.setLooping(false);
         sound_up.setVolume(screen.game.volume);
 
-        sound_down= Gdx.audio.newMusic(Gdx.files.internal("sounds/elevator_down.mp3"));
+        sound_down= screen.game.assetsLoader.findSound("sound-elevator_down");
         sound_down.setLooping(false);
         sound_down.setVolume(screen.game.volume);
     }

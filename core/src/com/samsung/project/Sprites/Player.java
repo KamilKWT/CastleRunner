@@ -1,6 +1,5 @@
 package com.samsung.project.Sprites;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -55,7 +54,7 @@ public class Player extends Sprite{
         JumpingLeftTex = screen.game.assetsLoader.findTexture("player-jumpingLeft");
         rectangle = new Rectangle();
 
-        player = bodyBuilder.createPlayer(startX, startY, 52, 52, false);
+        player = bodyBuilder.createPlayer(startX, startY, 26, false);
         startPosX = startX;
         startPosY = startY;
 
